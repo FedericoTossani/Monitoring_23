@@ -79,9 +79,52 @@ par(mfrow=c(2,1))
 plot(l2011$B1_sre, col = clb)
 plot(l2011$B2_sre, col = clg)
 
-# is the function to shut down the device (the graph in our case)
+# is the function to shut down the plotting device (the graph in our case)
 # dev.off()
 
+# Excercise: plot the first four bands with two rows and two columns
+
+#before plotting I set the color palette foor the red and NIR band
+clr <- colorRampPalette(c("dark red", "red", "pink"))(100)
+cln <- colorRampPalette(c("red", "orange", "yellow"))(100)
+
+
+par(mfrow=c(2,2))
+plot(l2011$B1_sre, col = clb)
+plot(l2011$B2_sre, col = clg)
+plot(l2011$B3_sre, col = clr)
+plot(l2011$B4_sre, col = cln)
+
+# stretch basically stretch the color in orden to let us see the color better
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin") # Natural color
+
+# now we are going to put the NIR band in one of these positions in order to see the health of a tree.
+# the higher the reflectance in the NIR the higher the health of the tree
+# we have only the red, the green and the blue channel of the RGB. normally we move all the band to right so we remove the blue band and add the NIR in the red channel.
+
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin") # False color, NIR in the red channel
+plotRGB(l2011, r=3, g=4, b=2, stretch="Lin") # False color, NIR in the green channel
+
+# with NIR band we can see also the humidity inside the forest. For examples in the images we are using it is visibile a lung-type patter inside the forest
+# that is where the water is flowing. In violet is the bare soil or agricultural fields. 
+# To better see where the forest has been cut it is usefull to put the NIR in the blue channel.
+# In this way all the bare soil become yellow!!
+
+plotRGB(l2011, r=3, g=2, b=4, stretch="Lin") # False color, NIR in the blue channel
+
+
+par(mfrow=c(2,2))
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin") # Natural color
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin") # False color, NIR in the red channel
+plotRGB(l2011, r=3, g=4, b=2, stretch="Lin") # False color, NIR in the green channel
+plotRGB(l2011, r=3, g=2, b=4, stretch="Lin") # False color, NIR in the blue channel
+
+
+# In general in monitoring ecosystem there are 2 steps:
+# 1. Explorative analysis: take the nowdays data to have an idea of the current status.
+# 2. Multitemporal analysis: in which we are going to see how the situation changed from to past to today.
+
+# our next step is to see the differences between 2011 and 1988
 
 
 
