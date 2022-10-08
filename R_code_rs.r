@@ -44,7 +44,43 @@ cl <- colorRampPalette(c("black", "grey", "light grey"))(100)
 #plotRGB is another funciton to plot images, what makes it special is the possibility to set which band have to stay in the different part of the RGB scheme
 plotRGB(l2011, r=3, g=2, b=1, stretch="Lin") 
 
+# b1 = reflectance in the blue
+# b2 = reflectance in the green
+# b3 = reflectance in the red
+# b4 = reflectance in the NIR (Near Infrared)
 
+# with the $ we are linking a part of the image to the name so we are able to plot only that part.
+# in our case we are trying to plot only the green band of our rasterbrick file
+plot(l2011$B2_sre)
+
+cl <- colorRampPalette(c("black", "dark grey", "grey", "light grey"))(100)
+
+# plot function have different argument, one of them is col =. with col can assign a new color palette to the plot
+plot(l2011$B2_sre, col = clb)
+
+# I can create every color palette i want, such as this one that goes from black to light green
+clg <- colorRampPalette(c("black", "green", "light green"))(100)
+plot(l2011$B2_sre, col = clg)
+
+# let's do the same with the blue band
+clb <- colorRampPalette(c("dark blue", "blue", "light blue"))(100)
+plot(l2011$B1_sre, col = clb)
+
+# par() is a function that allows us to plot one graph beside of the other
+# mf stay for multiframe
+
+par(mfrow=c(1,2))
+plot(l2011$B1_sre, col = clb)
+plot(l2011$B2_sre, col = clg)
+
+# now we'll do the same but with 2 rows and 1 column
+
+par(mfrow=c(2,1))
+plot(l2011$B1_sre, col = clb)
+plot(l2011$B2_sre, col = clg)
+
+# is the function to shut down the device (the graph in our case)
+# dev.off()
 
 
 
