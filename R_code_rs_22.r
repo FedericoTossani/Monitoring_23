@@ -126,7 +126,9 @@ plotRGB(l2011, r=3, g=2, b=4, stretch="Lin") # False color, NIR in the blue chan
 
 # our next step is to see the differences between 2011 and 1988
 
+# first we try to use another kind of stretch, the histogram stratching. this will enance a lot the differences from one place to another
 
+plotRGB(l2011, r=4, g=3, b=2, stretch="Hist")
 
 
 
