@@ -130,16 +130,27 @@ plotRGB(l2011, r=3, g=2, b=4, stretch="Lin") # False color, NIR in the blue chan
 
 plotRGB(l2011, r=4, g=3, b=2, stretch="Hist")
 
+# now let's star working on 1988 data. How to import the data is explained at the beginning of the file.
 
+l1988
+#class      : RasterBrick 
+#dimensions : 1499, 2967, 4447533, 7  (nrow, ncol, ncell, nlayers)
+#resolution : 30, 30  (x, y)
+#extent     : 579765, 668775, -522705, -477735  (xmin, xmax, ymin, ymax)
+#crs        : +proj=utm +zone=22 +datum=WGS84 +units=m +no_defs 
+#source     : p224r63_1988.grd 
+#names      :       B1_sre,       B2_sre,       B3_sre,       B4_sre,       B5_sre,        B6_bt,       B7_sre 
+#min values : 0.000000e+00, 7.159799e-03, 1.300000e-03, 6.015250e-04, 0.000000e+00, 2.916000e+02, 0.000000e+00 
+#max values :    1.0000000,    0.4799183,    0.4921374,    0.6595379,    0.6034456,  305.2000000,    0.5607360 
 
+# with par function we are plotting the two images in the same multiframe plot
 
+par(mfrow=c(2, 1))
+plotRGB(l1988, r=4, g=3, b=2, stretch="Lin")
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin")
 
-
-
-
-
-
-
-
-
+# same images but with NIR in the blue channel, this will enance the agricultural field
+par(mfrow=c(2, 1))
+plotRGB(l1988, r=3, g=2, b=4, stretch="Lin")
+plotRGB(l2011, r=3, g=2, b=4, stretch="Lin")
 
