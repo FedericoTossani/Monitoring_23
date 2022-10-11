@@ -84,7 +84,39 @@ EN
 plot(EN$layer.1, col=cl)
 
 plotRGB(EN, r=1,  g=7, b=13, stretch='Lin')
+
 # the next step is to use lapply function!! 
+
+# first of all let's built the list with the list.file function
+# as we have already set the working directory we can ignore the path argument of the function
+enlist <- list.files(pattern='EN')
+
+# now that the list is ready let's use lapply to apply raster function to the list of files
+EN <- lapply(enlist, raster)
+EN
+
+# EN is just a list to use it for the analysis we need a rasterStack. Let's use the stack() fucntion
+EN_stack <- stack(EN)
+
+plot(EN_stack, col = cl)
+
+# Excercise: plot only the first image of the stack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
