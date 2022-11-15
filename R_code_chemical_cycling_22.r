@@ -102,23 +102,18 @@ plot(EN_stack, col = cl)
 
 # Excercise: plot only the first image of the stack
 
+plot(EN_stack$layer.1, col = cl)
 
+# another operations that we can do is calculate the differance between 2 moment
 
+EN_diff <- (EN_stack$layer.1 - EN_stack$layer.13)
+cl_new <- colorRampPalette(c('blue', 'white', 'red')) (100)
 
+plot(EN_diff, col = cl_new)
 
+###!!!### IMPORTANT ###!!!###
 
+# now we learn how to to process and entire code (that someone else have written) without copy-paste it
+# we wil use the source() funciton!!!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+source('R_code_automatic_script.r')
