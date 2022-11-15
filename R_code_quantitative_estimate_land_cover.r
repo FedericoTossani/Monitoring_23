@@ -1,4 +1,8 @@
+# Quantitative estimates of forest loss
 
+# we will write a code to estimate the amount of squared meters lost in a tropical forest
+
+# Packages we need
 
 library(raster)
 library(RStoolbox) # classification
@@ -7,10 +11,25 @@ library(ggplot2)
 # install.packages("gridExtra")
 library(gridExtra) # for grid.arrange plotting
 
-setwd("~/lab/") # Linux
-# setwd("C:/lab/") # Windows
-# setwd("/Users/name/Desktop/lab/") # Mac
+# Set the working directory we are working on
+setwd("C:/lab/")
 
+# to import our data we can code in two different way:
+# FIRST
+deforlist <- list.files(pattern = "defor")
+deforlist
+
+# after creating the list let's apply the brick function to import all the set of layers with brick()
+list_defor <- lapply(deforlist, brick)
+
+# and at the end try to plot it to see what we have
+
+plot(list_defor[[1]]) # [[1]] is the number of the file I want to plot from the list. Remember the doulbe parentesis!!
+
+# -------------- FINO QUI -------------- #
+
+
+# The band we have in our images are:
 # NIR 1, RED 2, GREEN 3
 
 defor1 <- brick("defor1.jpg")
