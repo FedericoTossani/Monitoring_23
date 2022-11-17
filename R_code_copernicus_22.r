@@ -134,24 +134,26 @@ ggtitle("Snow cover during freezing winter!")
 # with the / we have one image on top of the other
 p1 / p2
 
-### !!! FINO QUI !!! ###
+# How to crop an image based on coordinates!!
 
-# you can crop your image on a certain area
+# Frist of all set the coordinates
+# long: from0 to 20
+# lat: from 30 to 50
 
-# longitude from 0 to 20
-# latitude from 30 to 50
-
-# crop the stack to the extent of Sicily
+# crop the stack to the extent of Italy
+# first two numbers are the longitude and the last two are the latitude
 ext <- c(0, 20, 30, 50)
-# stack_cropped <- crop(snowstack, ext) # this will crop the whole stack, and then single variables (layers) can be extracted
 
-ssummer_cropped <- crop(sce_summer, ext)
-swinter_cropped <- crop(sce_winter, ext)
+# this will crop the whole stack, and then single variables (layers) can be extracted
+stack_cropped <- crop(snowstack, ext) 
+
+sce_summer_cropped <- crop(sce_summer, ext)
+sce_winter_cropped <- crop(sce_winter, ext)
 
 p1 <- ggplot() + 
 geom_raster(sce_summer_cropped, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent.1)) +
 scale_fill_viridis(option="viridis") +
-ggtitle("Snow cover during my birthday!")
+ggtitle("Snow cover during Duccio's birthday!")
 
 p2 <- ggplot() + 
 geom_raster(sce_winter_cropped, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent.2)) +
