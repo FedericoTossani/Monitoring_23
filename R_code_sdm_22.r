@@ -122,35 +122,3 @@ plot(s1, col=cl)
 # to change the name of all the variable (in order to have beatiful title in the graph) we will use the names() function
 names(s1) <- c('Elevation', 'Precipitation', 'Temperature', 'Vegetation', 'Species Distribution Model')
 plot(s1, col=cl)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
