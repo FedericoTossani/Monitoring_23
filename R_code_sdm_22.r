@@ -63,6 +63,88 @@ points(presences, pch=19, col='blue')
 plot(preds$precipitation, col=cl)
 points(presences, pch=19, col='blue')
 
+# ----- # Day 2 # ----- #
+
+# let's use the code of the past lesson from a source file!
+source('R_code_source_sdm.r')
+
+# Let's use a model to calculate the probability!
+# First we have to explain to the software which are the data we are going to use
+datasdm <- sdmData(train = species, predictors = preds)
+
+# Model!!
+# the matemathical = in R is the tilde ~ (write it with Alt+126)
+# occurrence and temperature are the 2 variable of the model Y = Occurrence and X = temperature
+# than the model will calculate the slope and the intercept
+# in our case we have 4 variable so with the + we can put every variable in the model
+# METHODS we have different methods but one of the most used is the linear, and when we have multiple predictors it is called "generalized linear model"
+# generalized means that you are generalizing the all formula with all the variable and that they are normally distributed (there are some assumptions)
+m1 <- sdm(Occurrence~temperature+elevation+precipitation+vegetation, data=datasdm, methods="glm")
+m1
+
+# OUTPUT!!
+
+# class                                 : sdmModels 
+# ======================================================== 
+# number of species                     :  1 
+# number of modelling methods           :  1 
+# names of modelling methods            :  glm 
+# ------------------------------------------
+# model run success percentage (per species)  :
+# ------------------------------------------
+# method          Occurrence       
+# ---------------------- 
+# glm        :        100   %
+
+# ###################################################################
+# model performance (per species), using training test dataset:
+# -------------------------------------------------------------------------------
+#
+# ## species   :  Occurrence 
+# =========================
+#
+# methods    :     AUC     |     COR     |     TSS     |     Deviance 
+# -------------------------------------------------------------------------
+# glm        :     0.88    |     0.7     |     0.69    |     0.83     
+
+# Predict the Occurrence based on the model!!
+# we should explain the model we are using and the data
+p1 <- predict(m1, newdata=preds)
+
+# plot it!!
+plot(p1, col=cl)
+points(presences, pch=19)
+
+# at the end we will stack everythings together so we can plot it and it is easier to compare
+s1 <- stack(preds, p1)
+plot(s1, col=cl)
+
+# to change the name of all the variable (in order to have beatiful title in the graph) we will use the names() function
+names(s1) <- c('Elevation', 'Precipitation', 'Temperature', 'Vegetation', 'Species Distribution Model')
+plot(s1, col=cl)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
