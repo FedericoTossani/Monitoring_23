@@ -4,6 +4,6 @@ Code for the course of Monitoring Ecosystem Changes and Functioning @Alma Mater 
 
 In this repository I stored all the code I wrote during the course.
 
-Due to working necessities I will follow lessons from Panopto recorded in 2021/2022
+Due to working necessities I followed lectures from Panopto recorded in 2021/2022 academic year.
 
-After that I will check and comment the code from the current academic year by myself.
+I have checked the code from the current academic year by myself.
